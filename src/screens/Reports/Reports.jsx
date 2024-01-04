@@ -16,7 +16,6 @@ import { GiCarWheel } from "react-icons/gi";
 import { useState, useContext, useEffect } from 'react';
 
 import { reportDrivers } from './Scripts/ReportDrivers';
-import { doc, getDoc } from 'firebase/firestore';
 import { GenerateVehicleControl } from './Scripts/VehicleControl';
 import { reportVehicles } from './Scripts/ReportVehicles';
 import { reportInsurances } from './Scripts/ReportInsurances';
@@ -27,7 +26,6 @@ import { reportMaintenancesHistory } from './Scripts/ReportMaintenancesHistory';
 export const Reports = () => {
 
     const {
-        db,
         drivers,
         activities,
         insurances,
@@ -36,10 +34,6 @@ export const Reports = () => {
         mechanicalPendences,
         maintenanceHistory
     } = useContext(ApiContext);
-
-    const [modalVisible, setModalVisible] = useState(false);
-
-    const [modalContent, setModalContent] = useState(<></>);
   
 
     const handleVehicleControl = () => {
@@ -57,17 +51,6 @@ export const Reports = () => {
             <ReportBox handleOnClick={() => reportMaintenancesHistory(vehicles, maintenanceHistory)} icon={<FaHistory size={80}/>} title="Histórico de Manutenções"/>
             <ReportBox handleOnClick={() => reportTires(vehicles, tires)} icon={<GiCarWheel size={80}/>} title="Pneus"/>
             <ReportBox handleOnClick={() => reportInsurances(vehicles, insurances)} icon={<IoShieldCheckmark size={80}/>} title="Seguros"/>
-
-
-
-           {/*<Modal
-            isOpen={modalVisible}
-            className={styles.modal}
-            style={{overlay: {backgroundColor: 'rgba(214, 214, 214, 0.5)', zIndex: '10'}}}
-            >   
-            {modalContent}
-            </Modal>*/}
-
         </Container>
     );
 

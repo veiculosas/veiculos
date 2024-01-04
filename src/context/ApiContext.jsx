@@ -33,13 +33,17 @@ export const ApiProvider = ({children}) => {
     const [unities, setUnities] = useState([]);
 
     var veh = [];
+
         
     //Creates functions to call database from any child component.
     const getVehicles = async() => {
         veh = (await(getDoc(doc(db, 'assistencia', 'veiculos')))).data()
         setVehicles(veh);  
+        const sortedVeh = Object.keys(veh).sort((a, b) => {
+            return veh[a].modelo < veh[b].modelo ? -1 : 1;
+        });
         if(curVehicle == undefined){
-            setCurVehicle(Object.keys(veh)[0]);
+            setCurVehicle(sortedVeh[0]);
         }   
     };
     const getDrivers = async() => {
@@ -79,8 +83,6 @@ export const ApiProvider = ({children}) => {
         getUnities();
     }, [])
 
-
-        
    return (
     <ApiContext.Provider value={{
         curVehicle, 

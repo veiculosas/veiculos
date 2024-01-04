@@ -1,16 +1,15 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
-export const reportMaintenancesHistory = (vehicles, maintenancesHistory) => {
+export const reportMaintenancesHistory = (vehicles, maintenancesHistory, filters) => {
 
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+    
     const vehiclesData = Object.keys(maintenancesHistory).map((vehicle) => {
         const vehicleName = () => {
             return (vehicles[vehicle].marca).toUpperCase() + ' ' + (vehicles[vehicle].modelo).toUpperCase();
         }    
-
-        
 
         const historyData = (Object.keys(maintenancesHistory[vehicle]).map(a => {
           
