@@ -21,6 +21,8 @@ import { GenerateVehicleControl } from './Scripts/VehicleControl';
 import { reportVehicles } from './Scripts/ReportVehicles';
 import { reportInsurances } from './Scripts/ReportInsurances';
 import { reportTires } from './Scripts/ReportTires';
+import { reportMechanicalPendences } from './Scripts/ReportMechanicalPendences';
+import { reportMaintenancesHistory } from './Scripts/ReportMaintenancesHistory';
 
 export const Reports = () => {
 
@@ -30,7 +32,9 @@ export const Reports = () => {
         activities,
         insurances,
         vehicles,
-        tires
+        tires,
+        mechanicalPendences,
+        maintenanceHistory
     } = useContext(ApiContext);
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -49,8 +53,8 @@ export const Reports = () => {
             <ReportBox handleOnClick={() => reportVehicles(vehicles, activities)} icon={<AiFillCar size={80}/>} title="Veículos"/>
             <ReportBox handleOnClick={() => reportDrivers(drivers)} icon={<BsPersonVcard size={80}/>} title="Condutores"/>
             <ReportBox handleOnClick={() => handleVehicleControl()} icon={<AiFillCar size={80}/>} title="Controle de Veículos"/>
-            <ReportBox icon={<FaTools size={80}/>} title="Manutenções Pendentes"/>
-            <ReportBox icon={<FaHistory size={80}/>} title="Histórico de Manutenções"/>
+            <ReportBox handleOnClick={() => reportMechanicalPendences(vehicles, mechanicalPendences)} icon={<FaTools size={80}/>} title="Manutenções Pendentes"/>
+            <ReportBox handleOnClick={() => reportMaintenancesHistory(vehicles, maintenanceHistory)} icon={<FaHistory size={80}/>} title="Histórico de Manutenções"/>
             <ReportBox handleOnClick={() => reportTires(vehicles, tires)} icon={<GiCarWheel size={80}/>} title="Pneus"/>
             <ReportBox handleOnClick={() => reportInsurances(vehicles, insurances)} icon={<IoShieldCheckmark size={80}/>} title="Seguros"/>
 

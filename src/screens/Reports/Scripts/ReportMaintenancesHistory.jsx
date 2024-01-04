@@ -1,25 +1,31 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
-export const reportMechanicalPendences = (vehicles, mechanicalPendences) => {
+export const reportMaintenancesHistory = (vehicles, maintenancesHistory) => {
 
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-    const vehiclesData = Object.keys(mechanicalPendences).map((vehicle) => {
+    const vehiclesData = Object.keys(maintenancesHistory).map((vehicle) => {
         const vehicleName = () => {
             return (vehicles[vehicle].marca).toUpperCase() + ' ' + (vehicles[vehicle].modelo).toUpperCase();
         }    
 
-        const pendenceName = () => {
-            return (mechanicalPendences[vehicle]).toString().toUpperCase()
-        }
+        
 
-        return [
-                {text: (vehicles[vehicle].placa).toUpperCase(), fontSize: 10,margin: [0,3,0,3]},
-                {text: vehicleName(), fontSize: 10, margin: [0,3,0,3]},
-                {text: pendenceName(), fontSize: 10, margin: [0,3,0,3]}
-        ]
-
+        const historyData = (Object.keys(maintenancesHistory[vehicle]).map(a => {
+          
+            let [year, month, day] = (maintenancesHistory[vehicle][a].date).split('-');
+            let formattedDate = (day + '/' + month + '/' + year);              
+            
+            return [
+                {text: (vehicles[vehicle].placa).toUpperCase(), fontSize: 11,  margin: [0, 3, 0, 3]}, 
+                {text: vehicleName(), fontSize: 11, margin: [0, 3, 0, 3]}, 
+                {text: (maintenancesHistory[vehicle][a].desc).toUpperCase(), fontSize: 11, margin: [0, 3, 0, 3]}, 
+                {text: (maintenancesHistory[vehicle][a].shop).toUpperCase(), fontSize: 11, margin: [0, 3, 0, 3]}, 
+                {text: formattedDate, fontSize: 11, margin: [0, 3, 0, 3]}
+            ];
+        }));
+        return historyData[0];
     });
 
     const cabecalho = [
@@ -44,19 +50,23 @@ export const reportMechanicalPendences = (vehicles, mechanicalPendences) => {
             }
         },
         table: {
-            widths: ["*", '*', '*'],
+            widths: ["*", '*', '*', '*', '*'],
             heights: 20,
             headerRows: 2,
             body : [
                 [
-                    {text: 'Relatório de Manutenções Pendentes', fontSize: 12, colSpan: 3, style: 'tableHeader', alignment: 'center', bold: true, fillColor: '#474747', hLineWidth: .5, color: 'white', margin: [0,3,0,3]},
+                    {text: 'Relatório de Histórico de Manutenções', fontSize: 12, colSpan: 5, style: 'tableHeader', alignment: 'center', bold: true, fillColor: '#474747', hLineWidth: .5, color: 'white', margin: [0,3,0,3]},
+                    {},
+                    {},
                     {},
                     {}
                 ],
                 [
-                    {text: 'Placa', fontSize: 11, bold: true, fillColor: '#474747', color: 'white', margin: [0,3,0,3]},
-                    {text: 'Marca/Modelo', fontSize: 11, bold: true, fillColor: '#474747', color: 'white', margin: [0,3,0,3]},
-                    {text: 'Descrição', fontSize: 11, bold: true, fillColor: '#474747', color: 'white', margin: [0,3,0,3]}
+                    {text: 'Placa', fontSize: 11, bold: true, fillColor: '#474747', color: 'white', margin: [0, 3, 0, 3]},
+                    {text: 'Marca/Modelo', fontSize: 11, bold: true, fillColor: '#474747', color: 'white', margin: [0, 3, 0, 3]},
+                    {text: 'Descrição', fontSize: 11, bold: true, fillColor: '#474747', color: 'white', margin: [0, 3, 0, 3]},
+                    {text: 'Oficina', fontSize: 11, bold: true, fillColor: "#474747", color: 'white', margin: [0, 3, 0, 3]},
+                    {text: 'Data do Serviço', fontSize: 11, bold: true, fillColor: "#474747", color: 'white', margin: [0, 3, 0, 3]}
                 ],
                 ...vehiclesData
             ]    
