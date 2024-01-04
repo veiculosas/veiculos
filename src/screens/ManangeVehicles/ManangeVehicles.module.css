@@ -1,0 +1,99 @@
+
+.VerticalContainer{
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+    padding: 2%;
+    align-items: center;
+}
+table{
+    min-width: 80rem;
+}
+table ,th, td{
+    padding: .5rem .8rem .5rem .8rem;
+    border: 1px solid rgb(35, 93, 145);;
+    border-collapse: collapse;
+}
+.tableHeader{
+    font-weight: 600;
+    background-color: rgb(35, 93, 145);
+}
+.tableHeader > td{
+    color: white;
+    border: 1px solid rgb(5, 59, 105);
+}
+.editBtn{
+    color: rgb(9, 27, 131);
+    transition: .1s;
+    font-size: 1.2rem;
+}
+.editBtn:hover{
+    cursor: pointer;
+    color: rgb(16, 1, 151);
+}
+
+.btnContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 12rem;
+    height: 2.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(35, 93, 145);
+    color: white;
+    font-size: 15px;
+    border-radius: .5rem;
+    transition: .2s;
+    margin-bottom: .2rem;
+}
+.addBtn{
+    color: rgb(35, 93, 145);
+    font-size: 4rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    transition: .2s;
+}
+.addBtn:hover{
+    color: rgb(18, 61, 99);
+}
+.addBtn:active{
+    color: rgb(16, 47, 75);
+}
+
+.modal{
+    width: auto;
+    min-height: 12rem;
+    height: 38rem;
+    border-radius: .2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(54, 54, 54);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    transition: 2s;
+    padding: 2rem 3rem 2rem 3rem;
+    
+}
+.modalOverlay{
+    background-color: green;
+}
+
+.successMessage{
+    display: flex;
+    gap: 1rem;
+    color: rgb(47, 204, 47);
+    padding: .3rem 1rem .3rem 1rem;
+    border-radius: .4rem;
+    border: 1px solid rgb(47, 204, 47);
+}

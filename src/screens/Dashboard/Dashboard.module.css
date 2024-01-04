@@ -1,0 +1,13 @@
+.loading{
+    text-align: center;
+    font-size: 3rem;
+    animation: loadAnim;
+    animation-duration: 1s;
+    transition: .2s ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes loadAnim {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}

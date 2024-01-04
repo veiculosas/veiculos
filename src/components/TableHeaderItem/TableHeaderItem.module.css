@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    text-align: center;
+    gap: 1rem;
+}
+.arrowDownUp{
+    transition: .3s;
+}
+.arrowDownUp:hover{
+    color: rgb(202, 202, 202);
+}

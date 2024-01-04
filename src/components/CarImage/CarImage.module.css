@@ -1,0 +1,10 @@
+.divContainer{
+    width: 25rem;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.imageContainer{
+    width: 25rem;
+}
