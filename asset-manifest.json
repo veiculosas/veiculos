@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/veiculos/static/css/main.1d2158c9.css",
-    "main.js": "/veiculos/static/js/main.9376c29e.js",
+    "main.js": "/veiculos/static/js/main.daf8f375.js",
     "static/media/brasao.png": "/veiculos/static/media/brasao.89c7616080701ff38443.png",
     "index.html": "/veiculos/index.html",
     "main.1d2158c9.css.map": "/veiculos/static/css/main.1d2158c9.css.map",
-    "main.9376c29e.js.map": "/veiculos/static/js/main.9376c29e.js.map"
+    "main.daf8f375.js.map": "/veiculos/static/js/main.daf8f375.js.map"
   },
   "entrypoints": [
     "static/css/main.1d2158c9.css",
-    "static/js/main.9376c29e.js"
+    "static/js/main.daf8f375.js"
   ]
 }
