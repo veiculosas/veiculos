@@ -12,14 +12,20 @@ export const LoginScreen = () => {
 
     const [errMessage, setErrMessage] = useState();
 
+    const errorMessages = {
+       'Firebase: Error (auth/invalid-email).' : 'Email Inválido',
+       'Firebase: Error (auth/invalid-password).' : 'Senha Inválida',
+       'Firebase: Error (auth/invalid-login-credentials).' : 'Credenciais de Acesso Inválidas',
+       'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' : 'Acesso bloqueado por excesso de tentativas inválidas'
+    }
+
     const handleSumbitLoginForm = async(event) => {
         event.preventDefault();
-
         try {
             await signIn(email, password);
         }
         catch (err) {
-            setErrMessage(err.message);
+            setErrMessage(errorMessages[err.message] ? errorMessages[err.message] : err.message);
         }
     };
 
